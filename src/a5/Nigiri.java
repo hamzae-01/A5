@@ -2,112 +2,72 @@ package a5;
 
 public class Nigiri implements Sushi {
 
-	public static enum NigiriType {
+	public enum NigiriType {
 		TUNA, YELLOWTAIL, EEL, CRAB, SHRIMP
-	};
+	}
 
-	private NigiriType nigiritype;
+	private static double NIGIRI_PORTION_AMOUNT = 0.75;
+	private static double RICE_PORTION_AMOUNT = 0.5;
 
-	private IngredientPortion[] ingredientportion = new IngredientPortion[2];
+	private IngredientPortion seafood;
+	private IngredientPortion rice;
 
 	public Nigiri(NigiriType type) {
+		rice = new RicePortion(RICE_PORTION_AMOUNT);
 
-		this.nigiritype = type;
-
-		Ingredient ing;
-		if (type == NigiriType.TUNA) {
-			ingredientportion[0] = new TunaPortion(.75);
-		}
-
-		else if (type == NigiriType.CRAB) {
-
-			ingredientportion[0] = new CrabPortion(.75);
-
-		} else if (type == NigiriType.EEL) {
-
-			ingredientportion[0] = new EelPortion(.75);
-
-		} else if (type == NigiriType.YELLOWTAIL) {
-
-			ingredientportion[0] = new YellowtailPortion(.75);
-
-		} else if (type == NigiriType.SHRIMP) {
-
-			ingredientportion[0] = new ShrimpPortion(.75);
-
+		switch (type) {
+		case TUNA:
+			seafood = new TunaPortion(NIGIRI_PORTION_AMOUNT);
+			break;
+		case YELLOWTAIL:
+			seafood = new YellowtailPortion(NIGIRI_PORTION_AMOUNT);
+			break;
+		case EEL:
+			seafood = new EelPortion(NIGIRI_PORTION_AMOUNT);
+			break;
+		case CRAB:
+			seafood = new CrabPortion(NIGIRI_PORTION_AMOUNT);
+			break;
+		case SHRIMP:
+			seafood = new ShrimpPortion(NIGIRI_PORTION_AMOUNT);
+			break;
 		}
 	}
 
-
+	@Override
 	public String getName() {
-		String nigirimeat = "";
-		if (nigiritype == NigiriType.TUNA) {
-			nigirimeat = "tuna nigiri";
-		} else if (nigiritype == NigiriType.YELLOWTAIL) {
-
-			nigirimeat = "yellowtail nigiri";
-		} else if (nigiritype == NigiriType.EEL) {
-
-			nigirimeat = "eel nigiri";
-
-		} else if (nigiritype == NigiriType.CRAB) {
-
-			nigirimeat = "crab nigiri";
-
-		} else if (nigiritype == NigiriType.SHRIMP) {
-
-			nigirimeat = "shrimp nigiri";
-		}
-
-		return nigirimeat;
+		return seafood.getName() + " nigiri";
 	}
 
-
+	@Override
 	public IngredientPortion[] getIngredients() {
-		// TODO Auto-generated method stub
-		
-		return ingredientportion.clone();
+		return new IngredientPortion[] { seafood, rice };
 	}
 
-
+	@Override
 	public int getCalories() {
-		// TODO Auto-generated method stub
-		return ((int)((ingredientportion[0].getCalories() + ingredientportion[1].getCalories()) + 0.5 ));
+		return (int) (seafood.getCalories() + rice.getCalories() + 0.5);
 	}
 
+	@Override
 	public double getCost() {
-		// TODO Auto-generated method stub
-	
-		return ((int) (((ingredientportion[0].getCost() + ingredientportion[1].getCost())* 100.0) +0.5)) / 100.0;
-
+		return ((int) ((seafood.getCost() + rice.getCost()) * 100.0 + 0.5)) / 100.0;
 	}
 
-
+	@Override
 	public boolean getHasRice() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
-
+	@Override
 	public boolean getHasShellfish() {
-		// TODO Auto-generated method stub
-		if( ingredientportion[0].getIsShellfish() || ingredientportion[1].getIsShellfish()) {
-			
-			return true;
-		}
-		return false;
+		return seafood.getIsShellfish();
 	}
 
-
+	@Override
 	public boolean getIsVegetarian() {
-		// TODO Auto-generated method stub
-	
-		if( ingredientportion[0].getIsVegetarian() ||ingredientportion[1].getIsVegetarian()) {
-	
-			return true;
-		}
-		
 		return false;
 	}
-}
 
+
+}
