@@ -45,7 +45,7 @@ public class Nigiri implements Sushi {
 			nigirimeat = "tuna nigiri";
 		} else if (nigiritype == NigiriType.YELLOWTAIL) {
 
-			nigirimeat = "salmon nigiri";
+			nigirimeat = "yellowtail nigiri";
 		} else if (nigiritype == NigiriType.EEL) {
 
 			nigirimeat = "eel nigiri";

@@ -46,7 +46,7 @@ public class Sashimi implements Sushi{
 			}
 		else if(sashimitype== SashimiType.YELLOWTAIL) {
 			
-			sashimimeat = "salmon sashimi";
+			sashimimeat = "yellowtail sashimi";
 			}
 		else if(sashimitype== SashimiType.EEL) {
 			
