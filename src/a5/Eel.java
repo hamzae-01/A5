@@ -10,6 +10,6 @@ public class Eel extends IngredientImpl {
 		_caloriesPerD = (_caloriesPerOunce)/(_pricePerOunce);
 		isVegetarian = false;
 		isRice = false;
-		isShellFish = true;
+		isShellFish = false;
 	}
 }

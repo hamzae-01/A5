@@ -9,7 +9,7 @@ public class Yellowtail extends IngredientImpl {
 		_pricePerOunce = .74;
 		_caloriesPerD = (_caloriesPerOunce)/(_pricePerOunce);
 		isVegetarian = false;
-		isRice = true;
-		isShellFish = true;
+		isRice = false;
+		isShellFish = false;
 	}
 }
