@@ -30,6 +30,11 @@ public class IngredientPortionImpl implements IngredientPortion {
 		// TODO Auto-generated method stub
 		return _amount;
 	}
+	
+	public void setAmount(double amount) {
+		// TODO Auto-generated method stub
+		_amount = amount;
+	}
 
 	@Override
 	public String getName() {

@@ -40,6 +40,7 @@ public interface IngredientPortion {
 	double getCalories();
 	double getCost();
 	
+	
 	/*
 	 * combine(IngredientPortion other)
 	 * 
@@ -56,4 +57,6 @@ public interface IngredientPortion {
 	 */
 	
 	IngredientPortion combine(IngredientPortion other);
+
+	void setAmount(double new1);
 }
