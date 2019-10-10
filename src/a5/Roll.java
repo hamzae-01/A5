@@ -3,100 +3,81 @@ package a5;
 public class Roll implements Sushi {
 
 	private String name;
-	private IngredientPortion[] ingredients;
+	private IngredientPortion[] roll_ingredients;
 
-	public Roll(String name, IngredientPortion[] ingredients) {
-		
-		//IngredientPortion[] 
-		for (int i = 0; i < ingredients.length; i++) {
-			
-			//for (int j = 0; j < ingredients.length; i++) {
-
-			//	if (ingredients[i] == null) {
-
-			//		throw new RuntimeException("Please add an ingredient");
-			//	}
-
-			//}
+	public Roll(String name, IngredientPortion[] roll_ingredients) {
+		if (name == null) {
+			throw new RuntimeException("Roll name is null");
 		}
-
-		if (name == null || ingredients == null) {
-
-			throw new RuntimeException("Please add an ingredient");
-		}
-
 		this.name = name;
-		this.ingredients = ingredients.clone();
-
+		if (roll_ingredients == null) {
+			throw new RuntimeException("Roll ingredients is null");
+		}
+		for (int i=0; i<roll_ingredients.length; i++) {
+			if (roll_ingredients[i] == null) {
+				throw new RuntimeException("At least one roll ingredient is null");
+			}
+		}
+		this.roll_ingredients = roll_ingredients.clone();
 	}
-
+	
+	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return name;
 	}
 
+	@Override
 	public IngredientPortion[] getIngredients() {
-		// TODO Auto-generated method stub
-		return ingredients.clone();
-
+		return roll_ingredients.clone();
 	}
 
+	@Override
 	public int getCalories() {
-		// TODO Auto-generated method stub
-		double CaloriesPerOunce = 0;
-		for (int i = 0; i < ingredients.length; i++) {
-			CaloriesPerOunce += ingredients[i].getCalories();
+		double calorie_sum = 0.0;
+		for (int i=0; i<roll_ingredients.length; i++) {
+			calorie_sum += roll_ingredients[i].getCalories();
 		}
-
-		return ((int) (CaloriesPerOunce + 0.5));
-
+		
+		return (int) (calorie_sum + 0.5);
 	}
 
+	@Override
 	public double getCost() {
-		// TODO Auto-generated method stub
-		double PricePerOunce = 0;
-		for (int i = 0; i < ingredients.length; i++) {
-			PricePerOunce += ingredients[i].getCost();
+		double cost_sum = 0.0;
+		for (int i=0; i<roll_ingredients.length; i++) {
+			cost_sum += roll_ingredients[i].getCost();
 		}
-
-		return ((int) ((PricePerOunce * 100.0) + 0.5)) / 100.0;
+		
+		return ((int) (cost_sum * 100.0 + 0.5))/100.0;
 	}
 
+	@Override
 	public boolean getHasRice() {
-		// TODO Auto-generated method stub
-		for (int i = 0; i < ingredients.length; i++) {
-
-			if (ingredients[i].getIsRice()) {
+		for (int i=0; i<roll_ingredients.length; i++) {
+			if (roll_ingredients[i].getIsRice()) {
 				return true;
 			}
 		}
-
 		return false;
 	}
 
+	@Override
 	public boolean getHasShellfish() {
-		// TODO Auto-generated method stub
-
-		for (int i = 0; i < ingredients.length; i++) {
-
-			if (ingredients[i].getIsShellfish()) {
-
+		for (int i=0; i<roll_ingredients.length; i++) {
+			if (roll_ingredients[i].getIsShellfish()) {
 				return true;
 			}
 		}
 		return false;
 	}
 
+	@Override
 	public boolean getIsVegetarian() {
-		// TODO Auto-generated method stub
-		for (int i = 0; i < ingredients.length; i++) {
-
-			if (!ingredients[i].getIsVegetarian()) {
-
+		for (int i=0; i<roll_ingredients.length; i++) {
+			if (!roll_ingredients[i].getIsVegetarian()) {
 				return false;
 			}
 		}
-
 		return true;
 	}
 
