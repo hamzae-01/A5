@@ -177,9 +177,9 @@ public class Roll implements Sushi {
 		}
 
 		if (wasJedi == true) {
-			IngredientPortion[] outputArray = new IngredientPortion[len];
+			IngredientPortion[] outputArray = new IngredientPortion[len - 1];
 
-			for (int i = 0; i < len; i++) {
+			for (int i = 0; i < len - 1; i++) {
 				outputArray[i] = final_ingredients[i];
 			}
 
