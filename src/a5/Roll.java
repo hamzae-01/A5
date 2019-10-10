@@ -1,5 +1,4 @@
 package a5;
-
 public class Roll implements Sushi {
 
 	private String name;
