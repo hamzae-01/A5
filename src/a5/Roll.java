@@ -3,6 +3,7 @@ package a5;
 public class Roll implements Sushi {
 
 	String name;
+	double seaweedAmount = 0.0;
 
 	private IngredientPortion[] _roll_ingredients;
 	private IngredientPortion[] final_ingredients;
@@ -15,6 +16,22 @@ public class Roll implements Sushi {
 
 		}
 
+		if (roll_ingredients == null) {
+
+			throw new RuntimeException("Roll ingredients is null");
+
+		}
+
+		for (int i = 0; i < roll_ingredients.length; i++) {
+
+			if (roll_ingredients[i] == null) {
+
+				throw new RuntimeException("At least one roll ingredient is null");
+
+			}
+
+		}
+		
 		this.name = name;
 
 		double avocadoAmount = 0;
@@ -22,7 +39,6 @@ public class Roll implements Sushi {
 		double eelAmount = 0;
 		double riceAmount = 0;
 		double yellowtailAmount = 0;
-		double seaweedAmount = 0.0;
 		double shrimpAmount = 0;
 		double tunaAmount = 0;
 
@@ -96,6 +112,8 @@ public class Roll implements Sushi {
 			if (seaweedAmount >= 0) {
 				if (seaweedAmount < 0.1) {
 					seaweedAmount = 0.1;
+					final_ingredients[i] = new IngredientPortionImpl(seaweedAmount, new Seaweed());
+					seaweedAmount = -0.5;
 				} else {
 //System.out.println("I Value:  " + i);
 					final_ingredients[i] = new IngredientPortionImpl(seaweedAmount, new Seaweed());
@@ -111,21 +129,7 @@ public class Roll implements Sushi {
 
 		}
 
-		if (roll_ingredients == null) {
 
-			throw new RuntimeException("Roll ingredients is null");
-
-		}
-
-		for (int i = 0; i < roll_ingredients.length; i++) {
-
-			if (roll_ingredients[i] == null) {
-
-				throw new RuntimeException("At least one roll ingredient is null");
-
-			}
-
-		}
 
 		for (int i = 0; i < final_ingredients.length; i++) {
 			if (final_ingredients[i] == null) {
@@ -151,8 +155,38 @@ public class Roll implements Sushi {
 	@Override
 
 	public IngredientPortion[] getIngredients() {
-	
-		return _roll_ingredients.clone();
+
+		boolean wasJedi = false;
+		int len = 0;
+
+		for (int i = 0; i < _roll_ingredients.length; i++) {
+			if (_roll_ingredients[i] == null) {
+				continue;
+			}
+
+			if (_roll_ingredients[i] != null) {
+				len++;
+			}
+
+		}
+
+		if (seaweedAmount == -0.5) {
+			wasJedi = true;
+			len++;
+
+		}
+
+		if (wasJedi == true) {
+			IngredientPortion[] outputArray = new IngredientPortion[len];
+
+			for (int i = 0; i < len; i++) {
+				outputArray[i] = final_ingredients[i];
+			}
+
+			return outputArray;
+		} else {
+			return _roll_ingredients.clone();
+		}
 
 	}
 
