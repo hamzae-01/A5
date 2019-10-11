@@ -36,7 +36,7 @@ public class Roll implements Sushi {
 	@Override
 	public IngredientPortion[] getIngredients() {
 		// TODO Auto-generated method stub
-		return _ingredients;
+		return _ingredients.clone();
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class Roll implements Sushi {
 		// TODO Auto-generated method stub
 		double sum = 0;
 		for (IngredientPortion i : _ingredients) {
-			sum += i.getCalories();
+			sum += i.getCost();
 		}
 		int rounded = (int) Math.round(sum * 100);
 		double cost = (double) rounded / 100.0;
@@ -94,12 +94,12 @@ public class Roll implements Sushi {
 	public boolean getIsVegetarian() {
 
 		for (IngredientPortion i : _ingredients) {
-			if (i.getIsVegetarian()) {
-				return true;
+			if (!i.getIsVegetarian()) {
+				return false;
 			}
 		}
 
-		return false;
+		return true;
 
 	}
 
