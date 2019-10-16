@@ -33,7 +33,7 @@ public class Roll implements Sushi {
 //_ingredients = new IngredientPortion[ingredientList.size()];
 //ingredientList.values().toArray(_ingredients);
 //_name = name;
-//}
+//
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
