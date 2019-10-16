@@ -54,9 +54,7 @@ public class IngredientImpl implements Ingredient {
 
 	@Override
 	public boolean equals(Ingredient other) {
-
-//System.out.println("Price:" + Math.abs(getPricePerOunce() - this.getPricePerOunce()));
-// TODO Auto-generated method stub
+//If other is null, returns false.
 		if (other == null) {
 			return false;
 		} else {

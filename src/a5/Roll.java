@@ -6,7 +6,7 @@ public class Roll implements Sushi {
 
 	private String _name;
 	private IngredientPortion[] _ingredients;
-
+	
 	public Roll(String name, IngredientPortion[] roll_ingredients) {
 		validate(name);
 		validate(roll_ingredients);

@@ -4,7 +4,7 @@ public class IngredientPortionImpl implements IngredientPortion {
 	
 	Ingredient _ingredient;
 	double _amount;
-	Double _cals;
+	double _cals;
 	double _cost;
 	
 	public IngredientPortionImpl(double amount, Ingredient ingredient) {
