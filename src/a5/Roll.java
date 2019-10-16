@@ -26,7 +26,14 @@ public class Roll implements Sushi {
 		ingredientList.values().toArray(_ingredients);
 		_name = name;
 	}
-
+//}
+//if (!ingredientList.containsKey("seaweed") || ingredientList.get("seaweed").getAmount() < .1) {
+//	ingredientList.put("seaweed", new SeaweedPortion(.1));
+//}
+//_ingredients = new IngredientPortion[ingredientList.size()];
+//ingredientList.values().toArray(_ingredients);
+//_name = name;
+//}
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
